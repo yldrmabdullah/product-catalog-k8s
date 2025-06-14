@@ -1,0 +1,13 @@
+# k8s/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: product-catalog-service
+spec:
+  selector:
+    app: product-catalog # Bu servis, "app: product-catalog" etiketine sahip podları hedefleyecek
+  ports:
+    - protocol: TCP
+      port: 80 # Servisin dinleyeceği port (küme içinde veya dışından erişim için)
+      targetPort: 8081 # Pod'un içindeki uygulamanın çalıştığı port
+  type: LoadBalancer # Servis tipi: ClusterIP, NodePort, LoadBalancer, ExternalName
